@@ -28,13 +28,15 @@
 	:- info([
 		version is 1:0:0,
 		author is 'Paulo Moura',
-		date is 2021-02-07,
+		date is 2021-02-10,
 		comment is 'Official Logtalk packs registry.'
 	]).
 
 	description('Official Logtalk packs registry').
 
 	home_page('https://github.com/LogtalkDotOrg/logtalk-packs').
+
+	clone('https://github.com/LogtalkDotOrg/logtalk-packs.git').
 
 	archive('https://github.com/LogtalkDotOrg/logtalk-packs/archive/main.zip').
 

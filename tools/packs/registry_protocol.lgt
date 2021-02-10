@@ -24,7 +24,7 @@
 	:- info([
 		version is 0:1:0,
 		author is 'Paulo Moura',
-		date is 2021-02-07,
+		date is 2021-02-10,
 		comment is 'Packs registry protocol.'
 	]).
 
@@ -40,6 +40,13 @@
 	:- info(home_page/1, [
 		comment is 'Packs registry home page URL.',
 		argnames is ['HomePage']
+	]).
+
+	:- public(clone/1).
+	:- mode(clone(+atom), one).
+	:- info(clone/1, [
+		comment is 'Git clone URL for the packs registry.',
+		argnames is ['URL']
 	]).
 
 	:- public(archive/1).
