@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%  Default library paths for the developer tools
+%  Library paths for third-party libraries
 %  Last updated on February 10, 2021
 %
 %  This file is part of Logtalk <https://logtalk.org/>
@@ -29,22 +29,3 @@
 :- multifile(logtalk_library_path/2).
 :- dynamic(logtalk_library_path/2).
 
-% developer tools
-
-logtalk_library_path(tools, logtalk_user('tools/')).
-
-logtalk_library_path(assertions, tools('assertions/')).
-logtalk_library_path(code_metrics, tools('code_metrics/')).
-logtalk_library_path(dead_code_scanner, tools('dead_code_scanner/')).
-logtalk_library_path(debug_messages, tools('debug_messages/')).
-logtalk_library_path(debugger, tools('debugger/')).
-logtalk_library_path(diagrams, tools('diagrams/')).
-logtalk_library_path(doclet, tools('doclet/')).
-logtalk_library_path(help, tools('help/')).
-logtalk_library_path(lgtdoc, tools('lgtdoc/')).
-logtalk_library_path(lgtunit, tools('lgtunit/')).
-logtalk_library_path(packs, tools('packs/')).
-logtalk_library_path(ports_profiler, tools('ports_profiler/')).
-logtalk_library_path(profiler, tools('profiler/')).
-logtalk_library_path(tutor, tools('tutor/')).
-logtalk_library_path(wrapper, tools('wrapper/')).
