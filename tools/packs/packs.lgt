@@ -198,9 +198,25 @@
 		print_message/3
 	]).
 
+	:- uses(list, [
+		member/2
+	]).
+
 	:- uses(type, [
 		check/2
 	]).
+
+	available :-
+		logtalk::expand_library_path(logtalk_packs, Directory),
+		os::path_concat(Directory, 'registries/', Path),
+		os::directory_files(Path, Registries, [type(directory), dot_files(false), paths(relative)]),
+		member(Registry, Registries),
+		os::path_concat(Path, Registry, RegistryPath),
+		os::directory_files(RegistryPath, Files, [type(regular), extensions(['.lgt','.logtalk']), paths(relative)]),
+		findall(Pack, (member(File, Files), os::decompose_file_name(File, _, Pack, _)), [Pack| Packs]),
+		logtalk::print_message(information, packs, Registry::[Pack| Packs]),
+		fail.
+	available.
 
 	help :-
 		print_message(information, packs, help).
