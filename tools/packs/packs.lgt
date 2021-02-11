@@ -119,7 +119,7 @@
 	:- public(check/1).
 	:- mode(check(+atom), zero_or_one).
 	:- info(check/1, [
-		comment is 'Checks a package specification.',
+		comment is 'Checks a package specification and its sources.',
 		argnames is ['Spec']
 	]).
 
@@ -194,6 +194,22 @@
 		argnames is ['Package']
 	]).
 
+	:- private(registry_/5).
+	:- dynamic(registry_/5).
+	:- mode(registry_(?atom, ?atom, ?atom, ?atom, ?atom), zero_or_more).
+	:- info(registry_/5, [
+		comment is 'Registry table.',
+		argnames is ['Registry', 'Description', 'HomePage', 'Clone', 'Archive']
+	]).
+
+	:- private(pack_/6).
+	:- dynamic(pack_/6).
+	:- mode(pack_(?atom, ?atom, ?atom, ?atom, ?atom, -list), zero_or_more).
+	:- info(pack_/6, [
+		comment is 'Registry packs table.',
+		argnames is ['Registry', 'Description', 'HomePage', 'Clone', 'Archive']
+	]).
+
 	:- uses(logtalk, [
 		print_message/3
 	]).
@@ -205,6 +221,11 @@
 	:- uses(type, [
 		check/2
 	]).
+
+	:- initialization(parse).
+
+	% parse all registry and installed packs
+	parse.
 
 	available :-
 		logtalk::expand_library_path(logtalk_packs, Directory),
@@ -223,6 +244,20 @@
 		os::path_concat(Directory, 'sources/', Path),
 		os::directory_files(Path, Packs, [type(directory), dot_files(false), paths(relative)]),
 		logtalk::print_message(information, packs, 'Installed packs'::Packs).
+
+	install(Registry::Pack) :-
+		!,
+		check(directory, Registry),
+		check(atom, Pack),
+		logtalk::expand_library_path(logtalk_packs, Directory),
+		os::path_concat(Directory, 'registries/', Path0),
+		os::path_concat(Path0, Pack, Path),
+		check(file(['.lgt','.logtalk']), File),
+		install_pack(Registry, Pack, File).
+
+	parse_registry(Registry, Description, HomePage, Clone, Archive).
+
+	parse_pack(Registry, Pack, Description, License, HomePage, Versions).
 
 	help :-
 		print_message(information, packs, help).

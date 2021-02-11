@@ -29,8 +29,6 @@
 		comment is 'Pack manifest file for L-FLAT - Logtalk Formal Language and Automata Toolkit.'
 	]).
 
-	name(lflat).
-
 	description('L-FLAT - Logtalk Formal Language and Automata Toolkit').
 
 	license('MIT').

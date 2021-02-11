@@ -24,15 +24,8 @@
 	:- info([
 		version is 0:1:0,
 		author is 'Paulo Moura',
-		date is 2021-02-04,
+		date is 2021-02-11,
 		comment is 'Package specification protocol.'
-	]).
-
-	:- public(name/1).
-	:- mode(name(+atom), one).
-	:- info(name/1, [
-		comment is 'Package name. Also used to define a library alias to load the package.',
-		argnames is ['Name']
 	]).
 
 	:- public(description/1).
@@ -65,7 +58,7 @@
 		remarks is [
 			'Version' - 'The ``Version`` argument uses the same format as entity versions: ``Major:Minor:Pathch``.',
 			'URL' - 'Download URL for the package sources archive.',
-			'Checksum' - 'A pair where the key is the hash algorithm and the value is the checksum. The algorithm must be supported by ``openssl`` (e.g. ``sha256``).',
+			'Checksum' - 'A pair where the key is the hash algorithm and the value is the checksum. The algorithm must be supported by ``openssl`` (``sha256`` or better).',
 			'Dependencies' - 'A list of the package dependencies. Each dependency is a pair ``Name-Closure`` where ``Name`` identifies the dependency and ``Closure`` allows checking version compatibility.',
 			'Dependency names' - 'Either ``Registry::Dependency`` or just ``Dependency`` where both ``Registry`` and ``Dependency`` are atoms.'
 			'Portability' - 'Either the atom ``all`` or a list of the supported backend Prolog compilers (using the identifier atoms use by the ``prolog_dialect`` flag).'
