@@ -218,6 +218,12 @@
 		fail.
 	available.
 
+	installed :-
+		logtalk::expand_library_path(logtalk_packs, Directory),
+		os::path_concat(Directory, 'sources/', Path),
+		os::directory_files(Path, Packs, [type(directory), dot_files(false), paths(relative)]),
+		logtalk::print_message(information, packs, 'Installed packs'::Packs).
+
 	help :-
 		print_message(information, packs, help).
 
