@@ -19,7 +19,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-:- object(packs).
+:- object(packs,
+	imports((packs_registries, packs_packs))).
 
 	:- info([
 		version is 0:1:0,
@@ -106,19 +107,6 @@
 	:- info(registry/2, [
 		comment is 'Enumerates, by backtracking, all package registry entries.',
 		argnames is ['Package', 'URL']
-	]).
-
-	:- public(registries/0).
-	:- mode(registries, one).
-	:- info(registries/0, [
-		comment is 'Prints a list of all available registries.'
-	]).
-
-	:- public(registry/1).
-	:- mode(registry(+atom), one).
-	:- info(registry/1, [
-		comment is 'Prints all registry entries.',
-		argnames is ['Registry']
 	]).
 
 	:- public(describe/1).

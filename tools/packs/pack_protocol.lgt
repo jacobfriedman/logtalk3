@@ -57,8 +57,8 @@
 	]).
 
 	:- public(version/5).
-	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), +atom, one_or_more).
-	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), ++list(atom), one_or_more).
+	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), +atom), one_or_more).
+	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), ++list(atom)), one_or_more).
 	:- info(version/5, [
 		comment is 'Table of available versions.',
 		argnames is ['Version', 'URL', 'Checksum', 'Dependencies', 'Portability'],

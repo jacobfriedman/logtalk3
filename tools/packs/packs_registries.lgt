@@ -19,17 +19,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-:- initialization((
-	logtalk_load(basic_types(loader)),
-	logtalk_load(os(loader)),
-	logtalk_load([
-		pack_protocol,
-		registry_protocol,
-		packs_registries,
-		packs_packs,
-		packs,
-		packs_messages
-	], [
-		optimize(on)
-	])
-)).
+:- category(packs_registries).
+
+	:- info([
+		version is 1:0:0,
+		author is 'Paulo Moura',
+		date is 2021-02-11,
+		comment is 'Packs registry predicates.'
+	]).
+
+	:- public(registries/0).
+	:- mode(registries, one).
+	:- info(registries/0, [
+		comment is 'Prints a list of all available registries.'
+	]).
+
+	:- public(registry/1).
+	:- mode(registry(+atom), one).
+	:- info(registry/1, [
+		comment is 'Prints all registry entries.',
+		argnames is ['Registry']
+	]).
+
+	registries :-
+		logtalk::expand_library_path(logtalk_packs, Directory),
+		os::path_concat(Directory, 'registries/', Path),
+		os::directory_files(Path, Registries, [type(directory), dot_files(false)]),
+		logtalk::print_message(information, packs, 'Registries'::Registries).
+
+:- end_category.
