@@ -67,6 +67,7 @@
 			'URL' - 'Download URL for the package sources archive.',
 			'Checksum' - 'A pair where the key is the hash algorithm and the value is the checksum. The algorithm must be supported by ``openssl`` (e.g. ``sha256``).',
 			'Dependencies' - 'A list of the package dependencies. Each dependency is a pair ``Name-Closure`` where ``Name`` identifies the dependency and ``Closure`` allows checking version compatibility.',
+			'Dependency names' - 'Either ``Registry::Dependency`` or just ``Dependency`` where both ``Registry`` and ``Dependency`` are atoms.'
 			'Portability' - 'Either the atom ``all`` or a list of the supported backend Prolog compilers (using the identifier atoms use by the ``prolog_dialect`` flag).'
 		]
 	]).
