@@ -37,6 +37,7 @@
 
 	version(
 		2:0:2,
+		stable,
 		'https://github.com/l-flat/lflat/archive/v2.0.2.tar.gz',
 		sha256 - '8774b3863efc03bb6c284935885dcf34f69f115656d2496a33a446b6199f3e19',
 		[logtalk - @=<(3:36:0)],

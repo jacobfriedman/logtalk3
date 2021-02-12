@@ -49,14 +49,15 @@
 		argnames is ['HomePage']
 	]).
 
-	:- public(version/5).
-	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), +atom), one_or_more).
-	:- mode(version(++compound, +atom, +pair(atom,atom), ++list(pair(atom,callable)), ++list(atom)), one_or_more).
-	:- info(version/5, [
+	:- public(version/6).
+	:- mode(version(++compound, +atom, +atom, +pair(atom,atom), ++list(pair(atom,callable)), +atom), one_or_more).
+	:- mode(version(++compound, +atom, +atom, +pair(atom,atom), ++list(pair(atom,callable)), ++list(atom)), one_or_more).
+	:- info(version/6, [
 		comment is 'Table of available versions.',
-		argnames is ['Version', 'URL', 'Checksum', 'Dependencies', 'Portability'],
+		argnames is ['Version', 'Status', 'URL', 'Checksum', 'Dependencies', 'Portability'],
 		remarks is [
 			'Version' - 'The ``Version`` argument uses the same format as entity versions: ``Major:Minor:Pathch``.',
+			'Status' - 'Version development status. E.g ``stable``, ``beta``, ``alpha``, or ``deprecated``',
 			'URL' - 'Download URL for the package sources archive.',
 			'Checksum' - 'A pair where the key is the hash algorithm and the value is the checksum. The algorithm must be supported by ``openssl`` (``sha256`` or better).',
 			'Dependencies' - 'A list of the package dependencies. Each dependency is a pair ``Name-Closure`` where ``Name`` identifies the dependency and ``Closure`` allows checking version compatibility.',
