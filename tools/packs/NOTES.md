@@ -75,4 +75,35 @@ command:
 
 	$ openssl list -digest-commands
 
-Use of the SHA-256 hash algorithm (`sha256`) or better is recommended.
+Use of the SHA-256 hash algorithm (`sha256`) or better is required.
+
+
+Pack dependencies
+-----------------
+
+Pack dependencies can be specified by pack dependency name or, for better
+security, by registry and dependency names. When the pack depends on the
+Logtalk version itself, the reserved name `logtalk` can be used.
+
+- `'>='(Version)` - the pack requires a dependency with version equal or
+above the specified one. For example, `logtalk-'>='(3:36:0)` means that
+the pack requires Logtalk 3.36.0 or later version.
+
+- `'=<'(Version)` - the pack requires a dependency with version up to
+the specified one. For example, `bits-'=<'(2:1)` means that the pack
+requires a `bits` pack up to 2.1. This includes all previous versions
+and also all patches for version 2.1 (e.g. 2.1.7, 2.1.8, ...) but not
+version 2.2 or newer.
+
+- `'<'(Version)` - the pack requires a dependency with version older
+than the specified one. For example, `bits-'=<'(3)` means that the pack
+requires a `bits` 2.x or older version.
+
+- `'='(Version)` - the pack requires a dependency with a specific version.
+For example, `bits-'='(2.1)` means that the pack requires a `bits` pack
+version 2.1.x (thus, from version 2.1.0 to the latest patch for version
+2.1).
+
+More complex cases can be specified using a list of the elements above.
+For example, `bits-['>='(2), '<'(3)] means all 2.x versions bit not older
+or newer.

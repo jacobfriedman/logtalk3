@@ -24,34 +24,34 @@
 	:- info([
 		version is 0:1:0,
 		author is 'Paulo Moura',
-		date is 2021-02-11,
+		date is 2021-02-15,
 		comment is 'Package specification protocol.'
 	]).
 
 	:- public(description/1).
-	:- mode(description(+atom), one).
+	:- mode(description(?atom), zero_or_one).
 	:- info(description/1, [
 		comment is 'Package one line description.',
 		argnames is ['Description']
 	]).
 
 	:- public(license/1).
-	:- mode(license(+atom), one).
+	:- mode(license(?atom), zero_or_one).
 	:- info(license/1, [
 		comment is 'Package license. Specified using the identifier from the SPDX License List (https://spdx.org/licenses/).',
 		argnames is ['License']
 	]).
 
 	:- public(home_page/1).
-	:- mode(home_page(+atom), one).
+	:- mode(home_page(?atom), zero_or_one).
 	:- info(home_page/1, [
 		comment is 'Package home page URL.',
 		argnames is ['HomePage']
 	]).
 
 	:- public(version/6).
-	:- mode(version(++compound, +atom, +atom, +pair(atom,atom), ++list(pair(atom,callable)), +atom), one_or_more).
-	:- mode(version(++compound, +atom, +atom, +pair(atom,atom), ++list(pair(atom,callable)), ++list(atom)), one_or_more).
+	:- mode(version(?compound, ?atom, -atom, -pair(atom,atom), -list(pair(atom,callable)), ?atom), one_or_more).
+	:- mode(version(?compound, ?atom, -atom, -pair(atom,atom), -list(pair(atom,callable)), -list(atom)), one_or_more).
 	:- info(version/6, [
 		comment is 'Table of available versions.',
 		argnames is ['Version', 'Status', 'URL', 'Checksum', 'Dependencies', 'Portability'],
