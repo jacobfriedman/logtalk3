@@ -241,10 +241,10 @@ Type error when an element of a list is not a variable but is not of the expecte
    An element ``Element`` of the ``Argument`` list is neither a variable not a TYPE
 
 Domain error when an argument is of the correct type but not in the expected domain
-   ``Argument`` is a TYPE but not a valid DOMAIN
+   ``Argument`` is a TYPE but not in a valid DOMAIN
 
 Domain error when an element of a list is of the correct type but not in the expected domain
-   An element ``Element`` of the ``Argument`` list is a TYPE but not a valid DOMAIN
+   An element ``Element`` of the ``Argument`` list is a TYPE but not in a valid DOMAIN
 
 Other classes of errors have a less rigid style. In case of doubt,
 look for examples in this Handbook, in the APIs documentation, and
